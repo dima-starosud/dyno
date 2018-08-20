@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+set -xe
+docker-compose run -e COMPOSER_ALLOW_SUPERUSER=1 dyno composer "$@"

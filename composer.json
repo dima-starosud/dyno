@@ -1,0 +1,22 @@
+{
+  "name": "root/dyno",
+  "type": "service",
+  "require": {
+    "php": "7.2.*",
+    "php-di/php-di": "6.0.2",
+    "relay/relay": "2.x@dev",
+    "psr/http-factory": "1.0.0",
+    "middlewares/fast-route": "1.1.0",
+    "middlewares/request-handler": "1.2.0",
+    "justinrainbow/json-schema": "5.2.7",
+    "zendframework/zend-diactoros": "1.8.4",
+    "zendframework/zend-httphandlerrunner": "1.0.1",
+    "zendframework/zend-json": "3.1.0",
+    "zendframework/zend-db": "2.9.3"
+  },
+  "autoload": {
+    "psr-4": {
+      "Dyno\\": "src/"
+    }
+  }
+}

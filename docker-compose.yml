@@ -1,0 +1,27 @@
+version: '3'
+
+services:
+
+  mysql:
+    image: mysql:8
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_USER=dyno
+      - MYSQL_PASSWORD=dyno
+      - MYSQL_ROOT_PASSWORD=dyno
+      - MYSQL_DATABASE=dyno
+    volumes:
+      - ./scripts/docker/database:/docker-entrypoint-initdb.d
+
+  dyno:
+    build: .
+    volumes:
+      - .:/dyno
+    working_dir: /dyno
+    ports:
+      - 8123:8123
+    depends_on:
+      - mysql
+    tty: true
+    command: bash -c "composer install && php -S 0.0.0.0:8123 -t public/"
