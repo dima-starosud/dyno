@@ -1,0 +1,43 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=utf-8">
+    <link href="/jsoneditor.css" rel="stylesheet" type="text/css">
+    <script src="/jsoneditor.js"></script>
+    <script src="https://unpkg.com/reqwest@2.0.5/reqwest.js"></script>
+</head>
+<body>
+<!--<div id="jsoneditor" style="width: 400px; height: 400px;"></div>-->
+<div id="jsoneditor"></div>
+
+<script>
+    const refs = [
+        '/api/meta/schema',
+        'http://json-schema.org/draft-07/schema',
+    ];
+
+    Promise.all(
+        refs.map(ref => reqwest({
+            url: ref, method: 'get', crossOrigin: true
+        }))
+    ).then(value => {
+        const schemaRefs = Object.assign({}, ...refs.map((ref, i) => ({[ref]: value[i]})))
+        // create the editor
+        const container = document.getElementById('jsoneditor');
+        const options = {
+            schema: {$ref: '/api/meta/schema'},
+            schemaRefs
+        };
+        const editor = new JSONEditor(container, options);
+
+        // set json
+        const json = {};
+        editor.set(json);
+    });
+
+    // get json
+    // const json = editor.get();
+
+</script>
+</body>
+</html>

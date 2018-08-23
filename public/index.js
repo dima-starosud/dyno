@@ -4,8 +4,8 @@ domready(() => {
     const editor = new JSONEditor(editorEl, {
         ajax: true,
         schema: {$ref: '/api/jss'},
-        theme: 'bootstrap4',
-        iconlib: 'bootstrap4'
+        theme: 'bootstrap3',
+        iconlib: 'bootstrap3'
     });
 
     const submitEl = document.getElementById('submit');
