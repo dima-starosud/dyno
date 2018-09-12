@@ -1,0 +1,24 @@
+# Global
+.*.swp
+.DS_Store
+
+# Application
+web/app/vendor/
+web/app/doc/
+web/app/report/
+data/
+
+# PHPStorm
+.idea/**/tasks.xml
+.idea/dictionaries
+
+# Netbeans
+nbproject/
+/nbproject/
+/nbproject/private/
+/nbproject/private/private.properties
+
+# SSL Certs
+etc/ssl/
+
+.idea
